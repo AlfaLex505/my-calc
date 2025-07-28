@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 const Calculator = () => {
 
-  const [input, setInput] = useState('1+1');
+  const [input, setInput] = useState('');
   const [result, setResult] = useState('');
 
   const handleClick = (value) => {
@@ -52,10 +52,10 @@ const Calculator = () => {
           </button>
         ))}
 
-        <button onClick={handleClick("0")}>0</button>
-        <button onClick={handleClick("+")}>+</button>
-        <button className='equals' onClick={handleClick("=")}>=</button>
-        <button className='clear' onClick={handleClick("Clear")}>Clear</button>
+        <button onClick={() => handleClick("0")}>0</button>
+        <button onClick={() => handleClick("+")}>+</button>
+        <button className='equals' onClick={() => handleClick("=")}>=</button>
+        <button className='clear' onClick={() => handleClick("Clear")}>Clear</button>
       </div>
     </div>
   );
