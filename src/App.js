@@ -1,14 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 const Calculator = () => {
 
-  const [input, setInput] = ([]);
-  const [result, setResult] = ([]);
+  const [input, setInput] = useState('1+1');
+  const [result, setResult] = useState('');
 
-  const handleClick = (key) => {
-
-  };
+  const handleClick = (value) => {
+  if (value === "=")  {
+      try {
+      const evalResult = eval(input);
+      setResult(evalResult);
+      setInput('');
+    } catch (error) {
+      setResult('Math error');
+      setInput('');
+    }
+  } else if (value === "Clear") {
+    setInput('');
+    setResult('');
+  } else {
+    setInput((prev) => prev + value);
+  }
+};
 
   return(
     <div className='calculator'>
@@ -41,7 +55,7 @@ const Calculator = () => {
         <button onClick={handleClick("0")}>0</button>
         <button onClick={handleClick("+")}>+</button>
         <button className='equals' onClick={handleClick("=")}>=</button>
-        <button className='clear' onClick={handleClick("Clear")}>=</button>
+        <button className='clear' onClick={handleClick("Clear")}>Clear</button>
       </div>
     </div>
   );
